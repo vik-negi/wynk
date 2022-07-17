@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="mini-nav">
+        <a href="#">home</a>
+        <li id="playlist">playlist</li>
+        <li>Playlist_name: language</li>
+    </div>
+
+    <!-- main website -->
+    <div class="middle-part">
+        <div class="album_feature">
+            <div class="album-img">
+                <!-- <img src="{%static 'img/music/album_details/artist-img.webp' %}"> -->
+                {% if album.cover_image %}
+                <img  id="album-img" src="{{ album.cover_image.url }}">
+                {% else %}
+                <h3>Loading....</h3>
+                {% endif %}
+            </div>
+            <h2>feature artists</h2>
+            <div id="fet-art-cont">
+                <div class="feature-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div class="feature-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                    <h4>Artise Name</h4>
+                </div>
+                <div class="feature-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div class="feature-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div class="feature-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="more-art-div">
+                    <btn id="more-artists" type="button" onclick="moreArtist()">More Artist</btn>
+                </div>
+            </div>
+            <div id="hidden-artists-cont">
+                <div class="ex-cont">
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+                <div id="feature-hidden-artists">
+                    <div class="artists">
+                        <img src="{%static 'img/music/album_details/artist-img.webp' %}">
+                    </div>
+                        <h4>Artise Name</h4>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="album-song-details">
+            <div class="album-details">
+                <h1>{{album.title}} : Language</h1>
+                <h6>By {{album.arties}}</h6>
+                <h6>    {{album.rating}}</h6>
+
+                <div class="album-brief">
+                    <p>845K Followers</p>
+                    <li>{{album.song_set.count}} songs</li>
+                    <li>124 min</li>
+                </div>
+                <div class="album-option">
+                    <div class="album-left-option">
+                        <button id="play-song"><i class="fas fa-play"></i>Play Songs</button>
+                        <button id="follow"><i class="fas fa-plus"></i>follow</button>
+                        <button id="download"><i class="fas fa-download"></i>download</button>
+                    </div>
+                    <div class="album-right-option">
+                        <button class="share-album"><i class="fas fa-share "></i></button>
+                        <button class="album-more-option"><i class="fas fa-ellipsis-v fa-lg"></i></button>
+                        <!-- hidden part -->
+                        <!-- <div class="hidden-album-option">
+                            <p>Add to Queue</p>
+                            <p>Save Playlist</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            {% if album.song_set.count > 0 %}
+            {% for song in song_list %}
+            <div class="album-song">
+                <div class="album-song-container">
+                    {% if song.cover_image %}
+                    <img class="album-song-img" src="{{ song.cover_image.url}}" type="jpg/jfif/png">
+                    {% else %}
+                    <img class="album-song-img" src="{%static 'img/music/default_song.png'%}">
+                    {% endif %}
+                    <div class="song-details">
+                        <p>{{song.name}}</p>
+                        <p>{{album.arties}} - {{album.genre}}</p>
+                    </div>
+                </div>
+                <div class="audio-play">
+                    {% if song.file %}
+                    <audio controls class="song-play"><source src="{{ song.file.url }}" type="audio/mpeg"></audio>
+                    {% else %}
+                    <p>We will upload it soon.</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h3>There isn't any song in this album.</h3>
+            {% endif %}
+        </div>
+    </div>
+    <!-- <script src="{% static 'js/music/music.js' %}"></script> -->
+{% endblock body %}

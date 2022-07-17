@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="{% static 'js/music/music.js' %}"></script> -->
+    <link rel="icon" href="{% static '/img/music/default_song.png' %}">
+    <link rel="stylesheet" href="{% static 'css/music/home.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{%static 'css/header.css' %}"> -->
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <script src="{% static 'js/music/music.js' %}" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="{%static 'css/music/album_details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lightslider.css' %}">
+
+    <script src="{% static 'js/music/music.js' %}" type="text/javascript"></script>
+    <style>
+        *{
+            opacity: 0.99;
+        }
+        #navbar , .navbar-c{
+        background-color: #282f36;
+        padding: 1.5em 5em 1.5em 5em;
+        }
+        .album-img img{
+            height: 250px;
+        }
+    </style>
+    {% block head %}
+    
+    {% endblock head %}
+</head>
+<body>
+    <div class="upper-div"></div>
+    <div id="navbar" class="navbar-c">
+        <label id="icon-cont">
+            <i id="icon" class="fas fa-bars"></i>
+        </label>
+        <div id="hidden-navbar">
+            <a href="{% url 'home' %}" class="active">home</a>
+            <a href="#">podcasts</a>
+            <a href="#">Download app</a>
+            <a href="#">contact us</a>
+            <a href="#">about us</a>
+        </div>
+        <div id="left-side">
+            <div id="logo">
+                <img src="{%static 'img/music/album_details/Wynklogo-white.svg'%}">
+            </div>
+            <div id="left-rigth">
+                <div id="menubar">
+                    <a href="{% url 'home' %}" class="menubar-option action">home</a>
+                    <div class="podcasts menubar-option">
+                        <a href="#" class="menubar-option" id="podcasts">podcasts</a>
+                        <a href="#"><button class="new">New</button></a>
+                        <a href="#" class="menubar-option">downolad app</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="right-side">
+            <div class="search">
+                <input  placeholder="Search for music you love!">
+            </div>
+            <i id="search-icon" class="fas fa-search"></i>
+            <i class="fas fa-adjust"></i>
+            <i class="fas fa-language"></i>
+                {% if request.user.is_active %}
+            <h5>Hii, {{ request.user.username}}</h5>
+            <div class="sign-in">
+                <button class="sign-in-btn"><a href="{% url 'logout' %}">logout</a></button>
+            </div>
+              {% else %}
+            <div class="sign-in">
+                <button class="sign-in-btn"><a href="{% url 'register'%}">sign in</a></button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock body %}
+
+    {% block js %} {% endblock js %}
+</body>
+</html>

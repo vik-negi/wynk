@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- </title> -->
+    {% block title %}Listen & Download Latest MP3 Hindi, English, Other Language Songs Online | Wynk Music{% endblock title %}
+    
+    {% block head %}
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{%static 'css/music/home.css'%}">
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <!--  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <!-- Jquery -->
+    <script type="text/javascript" src="swiper.json"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'css/lightslider.css' %}">
+    <!-- <script src="{% static 'js/lightslider.js' %}"></script> -->
+
+
+    <style>
+        .navbar-c{
+            padding: 1em 5em;
+        }
+        .newRel-b-text{
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: none;
+    text-decoration-line: none;
+    }
+    </style>
+    {% endblock head %}
+    {% block body %}
+    <div class="swiper mySwiper" id="sld-cont">
+        <div class="swiper-wrapper">
+        <!-- slider box -->
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_1.webp'%}">
+
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_2.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_3.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_4.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_5.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_6.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_7.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_8.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_9.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img class="banner-img" src="{%static 'img/music/home/BANNER_10.webp'%}">
+        </div>
+        <div class="swiper-slide">
+            <img src="{%static 'img/music/home/BANNER_12.webp'%}">
+        </div>
+    </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+   
+
+
+   <!-- l,l -->
+
+    
+    <section id="newRel">
+        <h2 class="newRel-heading">New Release</h2>
+        <ul id="autoWidth" class="cs-hidden newRelCont">
+            {% for album in album_list %}
+            <li class="item-a newRel-box">
+                <a href="{% url 'album_details' album.id %}">
+                {% if album.cover_image %}
+                <img class="newRel-b-img" id="album-img" src="{{ album.cover_image.url }}">
+                {% else %}
+                <img class="newRel-b-img" src="{%static 'img/music/default_album.webp' %}">
+                {% endif %}
+                <p class="newRel-b-text">{{album.title}}</p>
+                </a>
+                
+            </li>
+            
+            <!-- <div class="swiper-button-next"></div> -->
+            <!-- <div class="swiper-pagination"></div> -->
+            <!-- <div id="goToPrevSlide"></div>
+            <div id="goToNextSlide"></div> -->
+        <!-- <div class="swiper-button-prev"></div> -->
+        <!-- <div class="swiper-pagination"></div> -->
+        {% endfor %}
+        </ul>
+    </section>
+
+
+
+    <div class="trending mt-5 container">
+        <div class="t-heading mb-2 flex justify-content-space-between ">
+            <h2>Hindi songs</h2>
+            <a href="#">More</a>
+        </div>
+        <div class="trending-container">
+            <ul id="autoWidth" class="cs-hidden t-c-imgsec">
+                {% if hindiSongs %}
+                {% for song in hindiSongs %}
+                <li class="item-a"><a href="#"><img src="{{ song.songImg.url}}"></a></li>
+                {% endfor %}
+            {% endif %}
+              </ul>
+        </div>
+    </div>
+    
+    <!-- <ul id="autoWidth" class="cs-hidden">
+        <li class="item-a itemm">
+            <img src="img/slider/newRel_5.jpg">
+        </li>
+        <li class="item-b itemm"><img src="img/slider/newRel_5.jpg"></li>
+        <li class="item-c itemm"><img src="img/slider/newRel_5.jpg"></li>
+        <li class="item-d itemm"><img src="img/slider/newRel_5.jpg"></li>
+        <li class="item-e itemm"><img src="img/slider/newRel_5.jpg"></li>
+
+      </ul> -->
+
+
+      <section id="home-sticky-play">
+          <div class="sticky-content">
+        <div class="sticky-play">
+            <div class="play-left-part">
+                <img src="{%static 'img/music/home/BANNER_1.webp'%}">
+                <div class="song-play-detail">Song Name
+                    <p>Artist name</p>
+                </div>
+            </div>
+            <div class="play-middle-part">
+                <i class="fas fa-cross"></i>
+                <i class="fas fa-left"></i>
+                <i class="fas fa-play"></i>
+                <i class="fas fa-right"></i>
+                <i class="fas fa-arrow"></i>
+            </div>
+            <div class="play-right-part">
+                <div id="timer">05:10 / 21:22</div>
+                <button id="play-btn" >auto</button>
+                <i class="fas fa-speaker"></i>
+                <i class="fas fa-song"></i>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    {% endblock body %}
+
+    {% block js %}
+    <!-- <script src="swiper.js"></script> -->
+    <script src="{% static 'js/lightslider.js' %}"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1.5,
+          spaceBetween: 10,
+          centeredSlides : true,
+          grabCursor: true,
+          loop: true,
+          speed: 1200,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          autoplay: {
+        delay: 5000,
+        disableOnInteraction: true,
+            },
+        });
+        
+        $(document).ready(function() {
+    $('#autoWidth').lightSlider({
+        autoWidth:true,
+        slideMargin:1,
+        loop:false,
+        centeredSlides: true,
+        // navigation: {
+        //     nextEl: ".swiper-button-next",
+        //     prevEl: ".swiper-button-prev",
+        //   },
+        onSliderLoad: function() {
+            $('#autoWidth').removeClass('cS-hidden');
+        },
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+     $('.swiper-pagination-bullet').hover(function() {
+      $( this ).trigger( "click" );
+   });
+    });
+
+//     $(document).ready(function() {
+//     var autoplaySlider = $('#autoplay').lightSlider({
+//         auto:true,
+//         loop:true,
+//         pauseOnHover: true,
+//         onBeforeSlide: function (el) {
+//             $('#current').text(el.getCurrentSlideCount());
+//         } 
+//     });
+//     $('#total').text(autoplaySlider.getTotalSlideCount());
+// });
+// });
+    </script>
+    {% endblock js %}
+    

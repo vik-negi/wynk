@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>Albums</title> -->
+    {% block title %}Album{% endblock title %}
+
+    {% block head %}
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        #title{
+            text-align: center;
+            text-shadow: rgba(0,0,0,0.6);
+        }
+        .album_list_table{
+            border-collapse: collapse;
+            width: 95%;
+            margin: 2em;
+            box-shadow: 0px 4px 8px -4px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        tr:nth-child(even){
+            background-color: rgb(195, 252, 195);
+        }
+        tr:nth-child(odd){
+            background-color: rgb(173, 230, 222);
+        }
+        
+        td, tr{
+            height: 33px;
+            font-size : 21px;
+        }
+        #table-heading{
+            font-weight: 700;
+            text-shadow: rgba(0,0,0,0.6);
+            background-color: inherit;
+            text-align: center;
+            height: 38px;
+        }
+        table tr td:last-child{
+            text-align: center;
+            margin-right: 1em;
+        }
+        table tr td:first-child{
+            margin-left: 1em;
+            text-align: center;
+        }
+        #link_name{
+            text-decoration: none;
+        }
+    </style>
+    {% endblock head %}
+
+{% block body %}
+    <div class="table-div">
+        <h1 id="title">Albums</h1>
+        <hr>
+        <h2 style="margin: 2em;">You have {{ album_list | length}} albums</h2>
+        <table class="album_list_table">
+            <tr id="table-heading">
+                <td>S no.</td>
+                <td>Name</td>
+                <td>Atrist</td>
+                <td>Genre</td>
+                <td>Rating</td>
+                <td>Song Count</td>
+            </tr>
+            {% for album in album_list%}
+            <tr>
+                <td>{{album.id}}</td>
+                
+                <td id="link_name" style="text-decoration: none;"><a href="{% url 'album_details' album.id %}">{{album.title }}</a></td>
+                <td>{{album.arties}}</td>
+                <td>{{album.genre}}</td>
+                <td>{{album.rating}}</td>
+                <td>{{album.song_set.count}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock body %}

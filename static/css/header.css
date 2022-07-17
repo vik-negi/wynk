@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body{
+    background-color: #0c0f12;
+    color: white;
+    font-family: Roboto,sans-serif;
+    /* opacity: 1; */
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Poppins", sans-serif;
+}
+.upper-div{
+    height: 4px;
+    background-color: rgb(255, 32, 32);
+    /* position: sticky;
+    top: 0px; */
+}
+
+#navbar{
+    background-color: #282f36;
+    display: flex;
+    /* height: 65px; */
+    padding: 1.5em 5em 1.5em 5em;
+    justify-content: space-around;
+    /* position: sticky;
+    top: 4px; */
+}
+
+
+
+#left-side{
+    display: flex;
+    width: 510px;
+    justify-content: space-between;
+}
+#left-side img{
+    width:200px;
+    height : 35px;
+}
+
+#menubar{
+    display: flex;
+    width : 280px;
+    justify-content: space-between;
+    float:right;
+    /* background-color: aliceblue; */
+}
+.menubar-option{
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 0px;
+    font-weight: 500;
+    font-family: Roboto,sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 0px 0px #ffffff;
+}
+.menubar-option:hover{
+    color: rgb(135, 135, 135);
+    text-shadow: none;
+    font-weight: 700;
+}
+
+.podcasts{
+    width: 220px;
+    display: inline;
+    margin: 0px;
+    padding: 9px 0px;
+}
+
+.new{
+    height: 13px;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: white;
+    width: 30px;
+    font-size: 9px;
+    word-spacing: px;
+    /* **** */
+    position: relative;
+    margin-right: -15px;
+
+    /* *** */
+    left: -15px;
+    top: -12px;
+    background-color: rgb(255, 60, 60);
+    border: none;
+    border-radius: 2px;
+}
+
+#right-side{
+    width: 550px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+.search input{
+    width: 280px;
+    height : 40px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    background-image: url('/img/search-13-32.ico');
+    background-position: 10px 5px; /* used for padding*/
+    padding: 0em 40px;
+    background-color: #000;
+    background-repeat: no-repeat;
+}
+#search-icon{
+    display: none;
+}
+#right-side i{
+    margin: 0.6em 0.6em;
+}
+#right-side i:hover{
+    cursor: pointer;
+    transform: scale(1.5,1.5);
+
+}
+/* #right-side i:first-child{
+    background-color: #ffffff;
+} */
+
+
+
+.sign-in{
+    margin: 0.2em 0em;
+}
+.sign-in-btn{
+    width : 70px;
+    height: 30px;
+    background-color: white;
+    /* font-family: Roboto,sans-serif; */
+    border: none;
+    border-radius: 3px;
+}
+.sign-in-btn a{
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #0c0f12;
+}
+.sign-in-btn:hover{
+    background-color: rgb(32, 32, 32);
+    border : 2px solid white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.sign-in-btn:hover a{
+    color: #fff;
+}
+
+
+.mini-nav{
+    display: flex;
+    width: 310px;
+    justify-content: space-between;
+    margin: 30px 110px;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: rgb(145, 147, 180);
+}
+
+#playlist:hover{
+    color:white;
+    cursor: pointer;
+}
+.mini-nav li:last-child{
+    color: white;
+}
+.mini-nav a{
+    text-transform: capitalize;
+    text-decoration: none;
+    color: rgb(145, 147, 180);
+    font-weight: 500;
+    
+}
+
+.mini-nav a:hover{
+    color:white;
+    cursor: pointer;
+}
+#icon{
+    color: white;
+    font-size: 30px;
+    /* line-height: 40px;  */
+    cursor: pointer;
+    float: right;
+    display: none;
+}
+
+#hidden-navbar{
+    display: none;
+}
+
+@media(max-width: 1048px) {
+    #hidden-navbar{
+        display: block;
+        background-color: rgb(32, 32, 32);
+        opacity: 0.8;
+        position: fixed;
+        width: 180px;
+        padding-top: 15px;
+        left: -100%;
+        transition: all .5s;
+        height: 100vh;
+        float: right;
+        margin: 50px 0;
+    }
+    #hidden-navbar a{
+        /* position: fixed; */
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        color: #ffffff;
+        list-style: none;
+        margin-bottom: 1em;
+        line-height: 30px;
+        font-size: 20px;
+    }    
+    #hidden-navbar a .active, #hidden-navbar a:hover{
+        border: none;
+        color: #3498db;
+
+    }
+    #hidden-navbar.show{
+        left: 0%;
+    }
+
+    .podcasts a{
+        display: block;
+    }
+    #menubar{
+        display: none;
+    }
+    #menubar.show{
+        left: 0;
+    }
+    #left-side img{
+        width: 150px;   
+    }
+    .new{
+        display: none;
+    }
+    
+    
+    #navbar {
+        /* justify-content: space-between;   */
+        padding : 0.9em 0.5em 0.5em 0.5em;
+        height: 45px;
+    }
+    #icon{
+        margin: 1.6px 10px 0px 10px;
+        display: block;
+        /* position: fixed; */
+    }
+    
+}
+@media (max-width: 750px){
+    .search{
+        display: none;
+    }
+    #search-icon{
+        display: inline-block;
+    }
+}
+@media (max-width: 400px){
+    /* .search{
+        display: none;
+    } */
+    /* #search-icon{
+        display: inline-block;
+    } */
+    #left-side img{
+        width: 120px;  
+    }
+
+}

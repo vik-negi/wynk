@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} MusicApp | {{ album.title }} {% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/authentication/login.css' %}">
+{% endblock head %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h2>Add New Song</h2>
+    <br>
+    <form method="post" action="{% url 'add_song' album.id %}" enctype="multipart/form-data">
+        <table class="form-table">
+            {% csrf_token %}
+<!-- <link rel="stylesheet" href="{% static "CSS/styles.css" %}"> -->
+            <tr>
+                <td class="form-table">Enter Song Name: </td>
+                <td class="form-table"><input class="inputData" type="text" name="song_name"></td>
+            </tr>
+            <tr>
+                <td class="form-table">Enter Song File: </td>
+                <td class="form-table"><input class="inputData"  type="file" name="song_file"></td>
+            </tr>
+            <tr>
+                <td  class="form-table" colspan="2">
+                    <input class="inputData" type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+
+
+    </form>
+{% endblock %}

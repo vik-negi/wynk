@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} MusicApp {% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/authentication/login.css' %}">
+{% endblock head %}
+
+{% block body %}
+<h1> Song </h1>
+<hr>
+<br>
+<br>
+<h4>You have {{ all_songs|length }} songs</h4>
+<!-- <link rel="stylesheet" href="{% static "CSS/styles.css" %}"> -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Album</th>
+            <th>File</th>
+        </tr>
+        {% for song in all_songs %}
+        <tr>
+            <td>{{ song.name | title }}</td>
+            <td><a href="{% url 'album_details' song.album.id %}">{{ song.album.title | title }}</a></td>
+            {% if song.file %}
+                <td><audio controls><source src="{{ song.file.url }}" type="audio/mpeg"></audio></td>
+            {% else %}
+                <td>No file associated</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

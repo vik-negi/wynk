@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} MusicApp | {{ album.title }} {% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/authentication/login.css' %}">
+{% endblock head %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <h2>Add New Album</h2>
+    <br>
+    <form method="post" action="{% url 'add_album' %}" enctype="multipart/form-data">
+        <table class="form-table">
+<!-- <link rel="stylesheet" href="{% static "CSS/styles.css" %}"> -->
+            {% csrf_token %}
+            <tr>
+                <td class="form-table">Enter Album Name: </td>
+                <td class="form-table"><input class="inputData" type="text" name="album_name"></td>
+            </tr>
+            <tr>
+                <td class="form-table">Enter Album Artist: </td>
+                <td class="form-table"><input class="inputData"  type="text" name="album_artist"></td>
+            </tr>
+            <tr>
+                <td class="form-table">Enter Album Genre: </td>
+                <td class="form-table"><input  class="inputData" type="text" name="album_genre"></td>
+            </tr>
+            <tr>
+                <td class="form-table">Enter Album Rating: </td>
+                <td class="form-table"><input class="inputData"  type="number" name="album_rating"></td>
+            </tr>
+            <tr>
+                <td class="form-table">Enter Album Image: </td>
+                <td class="form-table"><input class="inputData"  type="file" name="album_cover"></td>
+            </tr>
+            <tr>
+                <td  class="form-table" colspan="2">
+                    <input class="inputData" type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+
+
+    </form>
+{% endblock %}

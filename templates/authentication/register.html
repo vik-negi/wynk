@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %} MusicApp | {{ title }} {% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/authentication/login.css' %}">
+{% endblock head %}
+
+{% block body %}
+<div class=" flex-r container">
+    <div class="flex-r login-wrapper">
+      <div class="login-text">
+        <div class="logo">
+          <span><i class="fas fa-music"></i></span>
+          <span>Wynk Music</span>
+        </div>
+        <h1>Sign Up</h1>
+        <p>It's not long before you embark on this journey! </p>
+        {% if error %}
+        <p id="alert" style="text-decoration: none;font-size: 12px; padding-left: 15px; color: rgb(248, 82, 82); list-style: none;">{{error}}</p>
+        {% endif %}
+
+        <form class="flex-c" method="post" action="">
+          {% csrf_token %}
+          <div class="input-box fl-name">
+            <div class="f-label">
+              <span class="label">First Name</span>
+              <div class="f-name input">
+              <!-- {% render_field form.first_name class="form-control" %} -->
+              <input name="fname" type="text" placeholder="first Name">
+            </div>
+            </div>
+
+          <!-- <div class="input-box"> -->
+            
+            <div class="l-name">
+              <span class="label">Last Name</span>
+              <div class="l-label input">
+              <!-- {% render_field form.last_name class="form-control" %} -->
+              <input type="text" name="lname" placeholder="Last Name">
+            </div>
+          </div>
+          </div>
+          <div class="input-box">
+            <span class="label">Username</span>
+            <div class=" flex-r input">
+              <!-- {% render_field form.username class="form-control" %} -->
+              <input type="text" name="username" placeholder="Username">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+
+
+          <div class="input-box">
+            <span class="label">E mail</span>
+            <div class=" flex-r input">
+              <!-- {% render_field form.email class="form-control" %} -->
+              <input type="text" name="email" placeholder="name@abc.com">
+              <i class="fas fa-at"></i>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <span class="label">Password</span>
+            <div class="flex-r input">
+              <!-- {% render_field form.password1 class="form-control" %} -->
+              <input type="password" name="password1" placeholder="8+ (a, A, 1, #)">
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <span class="label">Confirm Password</span>
+            <div class="flex-r input">
+              <!-- {% render_field form.password2 class="form-control" %} -->
+              <input type="password" name="password2" placeholder="8+ (a, A, 1, #)">
+              <i class="fas fa-lock"></i>
+            </div>
+          </div>
+
+          <div class="check">
+            <input type="checkbox" name="" id="">
+            <span>I've read and agree with T&C</span>
+          </div>
+
+          <input class="btn" type="submit" value="Create an Account">
+          <span class="extra-line">
+            <span>Already have an account?</span>
+            <a href="{% url 'login' %}">Sign In</a>
+          </span>
+        </form>
+
+      </div>
+    </div>
+  </div>
+{% endblock body %}
